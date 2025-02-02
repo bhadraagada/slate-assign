@@ -17,7 +17,7 @@ const DashBoardLayout = ({ children }: DashBoardLayoutProps) => {
           <div className="lg:pl-[272px] flex w-full">
             <div className="w-full h-full">
               <Navbar />
-              <main className="h-screen py-8 px-6 flex flex-col">{children}</main>
+              <main className="py-8 px-6 flex flex-col">{children}</main>
             </div>
           </div>
         </div>

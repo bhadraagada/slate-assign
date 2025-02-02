@@ -2,8 +2,6 @@
 
 import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
-// import qs from "query-string";
-// import { useDebounce } from "usehooks-ts";
 
 import {
   Calendar,
@@ -27,8 +25,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const generalItems = [
   { title: "Home", url: "/", icon: Home },
@@ -38,7 +34,7 @@ const generalItems = [
 ];
 
 const adminItems = [
-  { title: "Admin Dashboard", url: "/admin", icon: Shield },
+  { title: "Admin Dashboard", url: "/", icon: Shield },
   { title: "School Dashboard", url: "/school", icon: GraduationCap },
   { title: "Parent Dashboard", url: "/parent", icon: Users },
   { title: "Student Dashboard", url: "/student", icon: UserCheck },
@@ -57,24 +53,7 @@ const studentItems = [
 ];
 
 export function SideBar() {
-  const router = useRouter();
-  const [value, setValue] = useState("");
-  // const debouncedValue = useDebounce(value, 500);
   const role = useAuthStore((state) => state.user?.role);
-
-  // useEffect(() => {
-  //   const url = qs.stringifyUrl(
-  //     {
-  //       url: "/",
-  //       query: {
-  //         search: debouncedValue,
-  //       },
-  //     },
-  //     { skipEmptyString: true, skipNull: true }
-  //   );
-
-  //   router.push(url);
-  // }, [debouncedValue, router]);
 
   interface MenuItem {
     title: string;
@@ -85,16 +64,16 @@ export function SideBar() {
   let roleItems: MenuItem[] = [];
   if (role === "Admin") {
     roleItems = adminItems;
-    setValue("admin");
+    // setValue("admin");
   } else if (role === "School") {
     roleItems = schoolItems;
-    setValue("school");
+    // setValue("school");
   } else if (role === "Parent") {
     roleItems = parentItems;
-    setValue("parent");
+    // setValue("parent");
   } else if (role === "Student") {
     roleItems = studentItems;
-    setValue("student");
+    // setValue("student");
   }
 
   return (

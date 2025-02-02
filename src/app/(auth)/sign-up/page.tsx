@@ -39,7 +39,7 @@ export default function SignupPage() {
       setError("User already exists! Please log in instead.");
       return;
     }
-    router.push("/dashboard");
+    router.push("/");
   };
 
   return (
