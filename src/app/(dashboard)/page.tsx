@@ -9,15 +9,26 @@ export default function Home() {
   const user = useAuthStore((state) => state.user);
   const router = useRouter();
 
-  // Simple "protection": if no user, redirect to login
   useEffect(() => {
     if (!user) {
       router.push("/sign-up");
     }
+
+    if (user && user.role === "School") {
+      router.push("/school");
+    }
+
+    if (user && user.role === "Parent") {
+      router.push("/parent");
+    }
+
+    if (user && user.role === "Student") {
+      router.push("/student");
+    }
   }, [user, router]);
 
   if (!user) {
-    return null; // or a loading state
+    return null;
   }
 
   return (

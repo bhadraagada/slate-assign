@@ -1,3 +1,4 @@
+import { MobileSidebar } from "@/components/mobile-sidebar";
 import Navbar from "@/components/Navbar";
 import { SideBar } from "@/components/Sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
@@ -13,6 +14,9 @@ const DashBoardLayout = ({ children }: DashBoardLayoutProps) => {
         <div className="flex w-full h-full bg-[#fafafa]">
           <div className=" fixed left-0 top-0 hidden lg:block lg:w-[264px] h-full overflow-y-auto">
             <SideBar />
+          </div>
+          <div className="lg:hidden fixed left-4 top-4 w-full h-full overflow-y-auto">
+            <MobileSidebar />
           </div>
           <div className="lg:pl-[272px] flex w-full">
             <div className="w-full h-full">

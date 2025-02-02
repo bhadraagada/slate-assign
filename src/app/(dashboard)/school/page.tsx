@@ -4,7 +4,7 @@ import Card from "@/components/card";
 import DataTable from "@/components/data-table";
 import SchoolDashboardCharts from "@/components/school-dashboard-charts";
 import SearchInput from "@/components/search-input";
-import Select from "@/components/select";
+import Select from "@/components/select-school";
 import { schools, students } from "@/data";
 import { MedalIcon, UserIcon } from "lucide-react";
 import type React from "react";
@@ -16,12 +16,20 @@ const SchoolPage: React.FC = () => {
 
   const filteredStudents = useMemo(() => {
     if (!selectedSchool) return [];
-    return students.filter(
-      (student) =>
-        student.schoolId === selectedSchool &&
-        student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        student.rollNo.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const lowerSearch = searchTerm.toLowerCase();
+    return students.filter((student) => {
+      // Only include students from the selected school
+      if (student.schoolId !== selectedSchool) return false;
+      // If there is no search term, include all students from the school
+      if (!lowerSearch) return true;
+      // Otherwise, filter by checking if any field includes the search term
+      return (
+        student.name.toLowerCase().includes(lowerSearch) ||
+        student.rollNo.toLowerCase().includes(lowerSearch) ||
+        student.division.toLowerCase().includes(lowerSearch) ||
+        student.std.toLowerCase().includes(lowerSearch)
+      );
+    });
   }, [selectedSchool, searchTerm]);
 
   return (
@@ -51,7 +59,7 @@ const SchoolPage: React.FC = () => {
             <Card title="Total Achievements" value={50} icon={<MedalIcon />} />
             <Card title="Total Achievements" value={50} icon={<MedalIcon />} />
           </div>
-          <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          <div className="bg-white shadow-md rounded-lg overflow-hidden ">
             <SearchInput onChange={setSearchTerm} value={searchTerm} />
             <DataTable students={filteredStudents} />
           </div>

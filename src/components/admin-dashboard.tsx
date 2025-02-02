@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import AdminDashboardCharts from "./admin-dashboard-charts";
 import Button from "./button";
 import Card from "./card";
-import Select from "./select";
+import Select from "./select-admin";
 
 const overallStats = {
   totalSchools: 50,

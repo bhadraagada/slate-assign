@@ -15,8 +15,6 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const { user, logout } = useAuthStore();
 
-  console.log({ user });
-
   return (
     <div className="w-[100%]">
       <nav className="flex items-center justify-between gap-[100px]  p-4 shadow-md border-gray-200 bg-[#fafafa]">
@@ -24,9 +22,10 @@ const Navbar: React.FC = () => {
           <Input
             type="text"
             placeholder="Search..."
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 hidden md:block"
           />
         </div>
+        <div className=""></div>
 
         <div className="flex items-center gap-4">
           {user ? (
