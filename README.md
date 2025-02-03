@@ -1,6 +1,6 @@
 # Slate Dashboard UI
 
-A responsive, role-based dashboard application for the Slate app. This project is built using Next.js 13 (App Router), Tailwind CSS, Zustand (with persist middleware), and Recharts. It caters to multiple user roles (Admin, School, Parent, Student) and includes features such as authentication, state management, data visualization, and a component-based architecture.
+A responsive, role-based dashboard application for the Slate app. This project is built using Next.js 15 (App Router), Tailwind CSS, Zustand (with persist middleware), and Recharts. It caters to multiple user roles (Admin, School, Parent, Student) and includes features such as authentication, state management, data visualization, and a component-based architecture.
 
 ---
 
